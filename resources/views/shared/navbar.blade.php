@@ -9,25 +9,22 @@
                 <span class="icon-bar"></span>
             </button>
             <a class="navbar-brand" href="#">Laravel</a>
+
         </div>
 
         <!-- Collect the nav links, forms, and other content for toggling -->
         <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-
             <ul class="nav navbar-nav navbar-right">
-                <li class="active"><a href="/">Home</a></li>
-                <li><a href="/blog">Blog</a></li>
-                <li><a href="/about">About</a></li>
-                <li><a href="/contact">Contact</a></li>
-                <li><a href="/tickets">Tickets</a></li>
-                @if(Auth::check())
-                <li><a href="#">{{ Auth::user()->name }}</a></li>
-                @endif
+                <li class="{{URL::current() == route('home')?'active':''}}"><a href="/">Home</a></li>
+                <li class="{{URL::current() == url('/blog')?'active':''}}"><a href="/blog">Blog</a></li>
+                {{--<li class="{{URL::current() == url('/about')?'active':''}}"><a href="/about">About</a></li>--}}
+                <li class="{{URL::current() == url('/contact')?'active':''}}"><a href="/contact">Contact</a></li>
+                <li class="{{URL::current() == url('/tickets')?'active':''}}"><a href="/tickets">Tickets</a></li>
                 <li class="dropdown">
                     <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">Dropdown <span class="caret"></span></a>
                     <ul class="dropdown-menu" role="menu">
                         @if(Auth::check())
-                            @if(Auth::user()->hasRole('manager'))
+                            @if(Auth::user()->hasRole('admin'))
                                 <li><a href="/admin">Admin</a></li>
                             @endif
                             <li><a href="/logout">Logout</a></li>
@@ -39,7 +36,11 @@
 
                     </ul>
                 </li>
+                @if(Auth::check())
+                    <h6 class="text-right">Hello, {{ Auth::user()->name }}</h6>
+                @endif
             </ul>
+
         </div><!-- /.navbar-collapse -->
     </div><!-- /.container-fluid -->
 </nav>

@@ -25,7 +25,7 @@ class CreateCategoryPostTable extends Migration
                 ->onDelete('cascade');
 
             $table->foreign('post_id')
-                ->references('id')->on('post')
+                ->references('id')->on('posts')
                 ->onUpdate('cascade')
                 ->onDelete('cascade');
         });

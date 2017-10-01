@@ -13,8 +13,9 @@
                 </h1>
 
                {{-- <h3 class="text-center margin-top-100 editContent">Building Practical Applications</h3>--}}
-
                 <div class="text-center">
+                    @include ('shared.status');
+
                     <img src="/images/laravel2.jpg"  height="391" alt="">
                 </div>
 

@@ -85,7 +85,7 @@ Route::post('/login', 'SessionsController@store');
 |--------------------------------------------------------------------------
  */
 
-Route::group(['prefix' => 'admin', 'namespace' => 'Admin', 'middleware' => 'manager'], function(){
+Route::group(['prefix' => 'admin', 'namespace' => 'Admin', 'middleware' => 'admin'], function(){
 
     Route::get('/', 'PagesController@home');
 
